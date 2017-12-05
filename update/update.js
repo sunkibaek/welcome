@@ -6,6 +6,8 @@ const update = (state, commands) => {
 
     if (command.$set !== undefined) {
       newState[key] = command.$set;
+    } else {
+      newState[key] = update(newState[key], commands[key]);
     }
   });
 

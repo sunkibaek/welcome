@@ -1,4 +1,16 @@
-const update = require("./your-file"); // <- this is the file you make;
+const update = require("./update"); // <- this is the file you make;
+
+describe.only("update - basic", () => {
+  it("changes speicified value", () => {
+    const state = { name: "Alice", todos: [] };
+    const nextState = update(state, {
+      name: { $set: "Bob" }
+    });
+
+    expect(nextState.name).toBe("Bob");
+    expect(state.todos).toBe(nextState.todos);
+  });
+});
 
 describe("update", () => {
   describe("has a #$set method that", () => {
